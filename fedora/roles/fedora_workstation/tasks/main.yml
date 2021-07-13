@@ -1,0 +1,41 @@
+- name: Hardening
+  include: hardening.yml
+
+- name: Optimize dnf
+  blockinfile:
+    path: /etc/dnf/dnf.conf
+    create: yes
+    block: |
+      deltarpm=true
+      fastestmirror=true
+      max_parallel_downloads={{ ansible_processor_vcpus }}
+  become: yes
+
+- name: Update system
+  dnf:
+    name: "*"
+    state: latest
+  become: yes
+
+- name: Install packages
+  include: base_packages.yml
+
+- name: Install flatpak packages
+  include: flatpak.yml
+
+- name: Enable services
+  systemd:
+    name:
+      - cockpit.socket
+      - podman
+      - sshd
+    enabled: yes
+    state: started
+
+- name: Set default shell to fish
+  user:
+    name: khorvath
+    shell: /usr/bin/fish
+
+- name: Reboot the system
+  reboot:

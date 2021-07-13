@@ -1,0 +1,4 @@
+- hosts: all
+  gather_facts: true
+  roles:
+    - fedora_workstation

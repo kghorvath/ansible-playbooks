@@ -1,0 +1,32 @@
+- name: Install rpmfusion repository
+  dnf:
+    state: present
+    disable_gpg_check: yes
+    name:
+      - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_facts.distribution_version }}.noarch.rpm
+      - https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_facts.distribution_version }}.noarch.rpm
+  become: yes
+  tags: rpmfusion
+
+    - name: Install 1Password repository
+      yum_repository:
+        name: 1Password
+        description: 1Password YUM Repo
+        baseurl: https://downloads.1password.com/linux/rpm/stable/x86_64
+        gpgcheck: yes
+        gpgkey: https://downloads.1password.com/linux/keys/1password.asc
+
+- name: Install base packages
+  dnf:
+    name: "{{ base_packages }}"
+    become: yes
+
+- name: Install multimedia
+  dnf:
+    name: "{{ multimedia }}"
+    become: yes
+
+- name: Install graphical apps
+  dnf:
+    name: "{{ graphical }}"
+    become: yes

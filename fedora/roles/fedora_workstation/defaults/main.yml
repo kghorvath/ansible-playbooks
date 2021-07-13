@@ -1,0 +1,68 @@
+base_packages:
+      - cabextract
+      - cockpit
+      - cockpit-machines
+      - dbus-tools
+      - dbus-daemon
+      - dconf
+      - emacs
+      - fish
+      - git
+      - libvirt
+      - lzip
+      - neofetch
+      - p7zip
+      - p7zip-plugins
+      - podman
+      - python3-psutil
+      - screen
+      - toolbox
+      - tmux
+      - unzip
+      - vim
+      - virt-manager
+      - xrdp
+      - zsh
+
+multimedia:
+      - compat-ffmpeg28
+      - compat-ffmpeg28-devel
+      - egl-utils
+      - egl-wayland
+      - flac
+      - ffmpeg
+      - ffmpeg-libs
+      - gstreamer1-libav
+      - gstreamer1-plugins-bad-free
+      - gstreamer1-plugins-bad-freeworld
+      - gstreamer1-plugins-base
+      - gstreamer1-plugins-base-tools
+      - gstreamer1-plugins-good
+      - gstreamer1-plugins-good-extras
+      - gstreamer1-plugins-ugly
+      - gstreamer1-plugins-ugly-free
+      - gstreamer1-svt-av1
+      - gstreamer1-svt-vp9
+      - gstreamer1-vaapi
+
+graphical:
+      - 1password
+      - baobab
+      - geary
+      - gimp
+      - gnome-boxes
+      - gnome-tweaks
+      - remmina
+      - tilix
+      - transmission-gtk
+
+flatpak_apps:
+      - com.discordapp.Discord
+      - com.github.junrrein.PDFSlicer
+      - com.github.tchx84.Flatseal
+      - com.microsoft.Teams
+      - com.mojang.Minecraft
+      - com.spotify.Client
+      - com.valvesoftware.Steam
+      - com.visualstudio.code
+      - us.zoom.Zoom

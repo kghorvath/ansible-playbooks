@@ -1,0 +1,22 @@
+- name: Install SSH authorized keys
+  ansible.posix.authorized_key:
+    user: khorvath
+    state: present
+    key: https://github.com/kghorvath.keys
+
+- name: Disable remote root login
+  lineinfile: 
+    dest: "{{ sshd_config }}" 
+    regexp: '^#?PermitRootLogin' 
+    line: 'PermitRootLogin no'
+  notify: restart sshd
+
+- name: Disable password login
+  lineinfile: 
+    dest: "{{ sshd_config }}" 
+    regexp: '^(#\s*)?PasswordAuthentication '
+    line: 'PasswordAuthentication no'
+  when: 
+    - add_identity_key is succeeded 
+    - not add_identity_key is skipped
+  notify: restart sshd
